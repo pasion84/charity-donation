@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Data
-public class CategoryDTO {
+public class InstitutionFormDTO {
     private String name;
+    private String description;
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @Data
-public class DonationDTO {
+public class DonationFormDTO {
     private Integer quantity;
     private List<Category> categories = new ArrayList<>();
     private Long institutionId;
