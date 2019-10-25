@@ -1,9 +1,6 @@
 package pl.coderslab.charity.model;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -13,15 +10,21 @@ import java.util.List;
 @Table(name = "donation")
 public class Donation extends AbstractEntity {
     private Integer quantity;
-    @OneToMany
+    @ManyToMany
     private List<Category> categories = new ArrayList<>();
     @OneToOne
     private Institution institution;
+    @Column(name = "street")
     private String street;
+    @Column(name = "city")
     private String city;
+    @Column(name = "zip_code")
     private String zipCode;
+    @Column(name = "pick_up_date")
     private LocalDate pickUpDate;
+    @Column(name = "pick_up_time")
     private LocalTime pickUpTime;
+    @Column(name = "pick_up_comment")
     private String pickUpComment;
 
     public Donation() {

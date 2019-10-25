@@ -43,6 +43,7 @@ public class DonationController {
 
     @PostMapping("/addDonation")
     public String processAddDonation(@ModelAttribute("newDonation") @Valid DonationFormDTO donationFormDTO, BindingResult bindingResult) {
+
         return "redirect:/";
     }
 }

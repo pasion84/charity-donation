@@ -1,9 +1,6 @@
 package pl.coderslab.charity.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import pl.coderslab.charity.model.Category;
 
 import java.time.LocalDate;
@@ -11,10 +8,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Data
+@Getter(value = AccessLevel.PUBLIC)
 public class DonationFormDTO {
     private Integer quantity;
     private List<Category> categories = new ArrayList<>();
