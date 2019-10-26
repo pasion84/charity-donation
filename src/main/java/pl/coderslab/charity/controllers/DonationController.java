@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.DonationFormDTO;
 import pl.coderslab.charity.model.Category;
+import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.repositories.CategoryRepository;
+import pl.coderslab.charity.repositories.InstitutionRepository;
 import pl.coderslab.charity.services.CategoryService;
+import pl.coderslab.charity.services.DonationService;
 import pl.coderslab.charity.services.InstitutionService;
 
 import javax.validation.Valid;
@@ -22,11 +25,15 @@ public class DonationController {
     private CategoryService categoryService;
     private CategoryRepository categoryRepository;
     private InstitutionService institutionService;
+    private InstitutionRepository institutionRepository;
+    private DonationService donationService;
 
-    public DonationController(CategoryService categoryService, CategoryRepository categoryRepository, InstitutionService institutionService) {
+    public DonationController(CategoryService categoryService, CategoryRepository categoryRepository, InstitutionService institutionService, InstitutionRepository institutionRepository, DonationService donationService) {
         this.categoryService = categoryService;
         this.categoryRepository = categoryRepository;
         this.institutionService = institutionService;
+        this.institutionRepository = institutionRepository;
+        this.donationService = donationService;
     }
 
     @ModelAttribute("categories")
@@ -34,16 +41,21 @@ public class DonationController {
         return categoryRepository.findAll();
     }
 
+    @ModelAttribute("institutions")
+    public List<Institution> institutionList() {
+        return institutionRepository.findAll();
+    }
+
     @GetMapping("/addDonation")
     public String prepareAddDonation(Model model) {
-        model.addAttribute("newDonation", new DonationFormDTO());
+        model.addAttribute("createDonation", new DonationFormDTO());
         return "newDonation";
     }
 //    todo: obsługa błędów
 
     @PostMapping("/addDonation")
-    public String processAddDonation(@ModelAttribute("newDonation") @Valid DonationFormDTO donationFormDTO, BindingResult bindingResult) {
-
+    public String processAddDonation(@ModelAttribute("createDonation") @Valid DonationFormDTO donationFormDTO, BindingResult bindingResult) {
+        donationService.addNewDonation(donationFormDTO);
         return "redirect:/";
     }
 }
