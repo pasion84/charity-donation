@@ -2,7 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:url value="/" var="mainURL"/>
 <jsp:include page="header.jsp"/>
+
+<div class="slogan container container--90">
+    <div class="slogan--item">
+        <h1>
+            Zacznij pomagać!<br/>
+            Oddaj niechciane rzeczy w zaufane ręce
+        </h1>
+    </div>
+</div>
+
 </header>
 <section class="stats">
     <div class="container container--85">
@@ -58,9 +69,11 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="<c:url value="resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
+        <img src="<c:url value="${mainURL}resources/images/signature.svg"/>" class="about-us--text-signature"
+             alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="resources/images/about-us.jpg"/>" alt="People in circle"/>
+    <div class="about-us--image"><img src="<c:url value="${mainURL}resources/images/about-us.jpg"/>"
+                                      alt="People in circle"/>
     </div>
 </section>
 
@@ -72,32 +85,18 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <li>
+            <c:forEach items="${institutions}" var="institution" varStatus="i">
+            <c:if test="${(i.index+1)%2>0}">
+            <li></c:if>
                 <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
+                    <div class="title">${institution.name}</div>
+                    <div class="title">${institution.description}</div>
                 </div>
-
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
-
-            </li>
+                </c:forEach>
 
         </ul>
     </div>
+
 
 </section>
 

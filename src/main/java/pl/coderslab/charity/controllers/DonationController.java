@@ -46,14 +46,14 @@ public class DonationController {
         return institutionRepository.findAll();
     }
 
-    @GetMapping("/addDonation")
+    @GetMapping
     public String prepareAddDonation(Model model) {
         model.addAttribute("createDonation", new DonationFormDTO());
         return "newDonation";
     }
 //    todo: obsługa błędów
 
-    @PostMapping("/addDonation")
+    @PostMapping
     public String processAddDonation(@ModelAttribute("createDonation") @Valid DonationFormDTO donationFormDTO, BindingResult bindingResult) {
         donationService.addNewDonation(donationFormDTO);
         return "redirect:/";

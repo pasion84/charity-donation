@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Form Select
@@ -72,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".form-group--dropdown select").forEach(el = > {
         new FormSelect(el);
-})
+    })
     ;
 
     /**
@@ -136,7 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$next.forEach(btn = > {
                 btn.addEventListener("click", e = > {
                     e.preventDefault();
+            if (validation(this.currentStep)) {
             this.currentStep++;
+            }
             this.updateForm();
         })
             ;
@@ -147,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$prev.forEach(btn = > {
                 btn.addEventListener("click", e = > {
                     e.preventDefault();
+
             this.currentStep--;
             this.updateForm();
         })
@@ -169,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // TODO: Validation
 
+
             this.slides.forEach(slide = > {
                 slide.classList.remove("active");
 
@@ -182,6 +185,11 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$step.parentElement.hidden = this.currentStep >= 5;
 
             // TODO: get data from inputs and show them in summary
+
+            console.log(this.currentStep);
+            if (this.currentStep === 5) {
+                summaryStep();
+            }
         }
 
     }
@@ -190,4 +198,107 @@ document.addEventListener("DOMContentLoaded", function () {
     if (form !== null) {
         new FormSteps(form);
     }
-});
+
+    function validation(currentStep) {
+        var currentSlide = $('.active');
+        var result = false;
+
+        // kasujemy wszystkie informacje o błędach
+        $('.error').each(function () {
+            $(this).html(' ');
+        });
+
+        if (currentStep === 1) {
+            currentSlide.find('input').each(function () {
+                if ($(this).prop('checked')) {
+                    result = true;
+                }
+            });
+            if (!result) {
+                currentSlide.find('.error').html('Zaznacz kategorię przedmiotu który chcesz podarować.');
+            }
+        }
+
+        if (currentStep === 2) {
+            if (currentSlide.find('input').prop('value') > 0) {
+                result = true;
+            }
+            if (!result) {
+                currentSlide.find('.error').html('Podaj ilość worków.');
+            }
+        }
+
+        if (currentStep === 3) {
+            currentSlide.find('input').each(function () {
+                if ($(this).prop('checked')) {
+                    result = true;
+                }
+            });
+            if (!result) {
+                currentSlide.find('.error').html('Zaznacz Instytucję do której chcesz przekazać paczkę');
+            }
+        }
+
+        if (currentStep === 4) {
+            result = true;
+            var fields = currentSlide.find('input');
+            var errors = currentSlide.find('.error');
+
+            fields.each(function (i) {
+                if (!$(this).prop('value')) {
+                    result = false;
+                    if (i === 0) {
+                        errors.eq(i).html('Podaj nazwę ulicy i numer domu')
+                    }
+                    if (i === 1) {
+                        errors.eq(i).html('Podaj miasto')
+                    }
+                    if (i === 2) {
+                        errors.eq(i).html('Podaj kod pocztowy')
+                    }
+                    if (i === 3) {
+                        errors.eq(i).html('Podaj numer telefonu')
+                    }
+                    if (i === 4) {
+                        errors.eq(i).html('Podaj termin odbioru')
+                    }
+                    if (i === 5) {
+                        errors.eq(i).html('Podaj godzinę odbioru')
+                    }
+                }
+            });
+        }
+        return result;
+    }
+
+    function summaryStep() {
+
+        var caption = $('.quantity').prop('value') + ' worki ';
+        $('.category').each(function () {
+            if ($(this).prop('checked')) {
+                caption += $(this).data('name')
+            }
+            caption += ' ';
+        });
+        $('#summaryQuantityAndCategories').html(caption);
+
+        caption = "Dla ";
+        $('.institution').each(function () {
+            if ($(this).prop('checked')) {
+                caption += $(this).data('name')
+            }
+        });
+        $('#summaryInstitution').html(caption);
+
+        $('#summaryStreet').html($('.street').prop('value'));
+        $('#summaryCity').html($('.city').prop('value'));
+        $('#summaryZipCode').html($('.zipCode').prop('value'));
+        $('#summaryPhone').html($('.phone').prop('value'));
+        $('#summaryDate').html($('.date').prop('value'));
+        $('#summaryTime').html($('.time').prop('value'));
+        $('#summaryComment').html($('.comment').prop('value'));
+    }
+
+
+    })
+    ;

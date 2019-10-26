@@ -32,15 +32,17 @@
     </div>
 </div>
 </header>
+
+
 <section class="form--steps">
     <div class="form--steps-instructions">
         <div class="form--steps-container">
-            <h4>kkk</h4>
+            <h4>info</h4>
             <p data-step="1" class="active">
                 twoje darowizny - szczegoly
             </p>
             <p data-step="2">
-                twoje darowizny - szczegoly
+                twoje darowizny
             </p>
             <p data-step="3">
                 wybierz instytucję
@@ -59,16 +61,17 @@
         <div data-step="1" class="active">
             <p>wybierz kategorie</p>
             <c:forEach items="${categories}" var="category">
-                <div class="form-group--checkbox">
+                <div class="form-group form-group--checkbox">
                     <label>
-                        <form:checkbox path="categories" value="${category.id}" data-name="${category.name}"/>
+                        <form:checkbox path="categories" value="${category.id}" cssClass="category"
+                                       data-name="${category.name}"/>
                         <span class="checkbox"></span>
                         <span class="description">${category.name}</span>
                     </label>
                 </div>
             </c:forEach>
-            <div class="form-group--buttons">
-                <button type="button" class="btn">kolejny krok</button>
+            <div class="form-group form-group--buttons">
+                <button type="button" class="btn next-step">kolejny krok</button>
             </div>
         </div>
 
@@ -89,7 +92,7 @@
                 </div>
             </c:forEach>
             <div class="form-group--buttons">
-                <button type="button" class="btn">kolejny krok</button>
+                <button type="button" class="btn next-step">kolejny krok</button>
             </div>
         </div>
 
@@ -101,7 +104,7 @@
                 </label>
             </div>
             <div class="form-group--buttons">
-                <button type="button" class="btn">kolejny krok</button>
+                <button type="button" class="btn next-step">kolejny krok</button>
             </div>
         </div>
 
@@ -161,8 +164,10 @@
             <div class="form-group form-group--buttons">
                 <input type="submit" class="btn" value="zapisz">
             </div>
+        </div>
 
-                <%--    <form:checkboxes path="categories"--%>
+
+            <%--    <form:checkboxes path="categories"--%>
                 <%--                     items="${categories}" id="categories" itemLabel="name" /><br>--%>
                 <%--    <p>wybierz instytucję</p>--%>
                 <%--    <form:select path="institutions" items="${institutions}" id="institutions" itemLabel="name" /><br>--%>

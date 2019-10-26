@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:url value="/" var="mainURL"/>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -10,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
 
-    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="${mainURL}resources/css/style.css"/>"/>
 </head>
 <body>
 <header class="header--main-page">
@@ -21,21 +22,14 @@
         </ul>
 
         <ul>
-            <li><a href="<c:url value="/donation/addDonation"/>" class="btn btn--without-border active">Start</a></li>
-            <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
-            <li><a href="#" class="btn btn--without-border">O nas</a></li>
-            <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
+            <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+            <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
+            <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
+            <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
+            <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
 
-    <div class="slogan container container--90">
-        <div class="slogan--item">
-            <h1>
-                Zacznij pomagać!<br/>
-                Oddaj niechciane rzeczy w zaufane ręce
-            </h1>
-        </div>
-    </div>
 
 
