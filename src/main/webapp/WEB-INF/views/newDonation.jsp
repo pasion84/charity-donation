@@ -78,7 +78,7 @@
         <div data-step="2">
             <p>wybierz organizację</p>
             <c:forEach items="${institutions}" var="institutions">
-                <div class="form-group--checkbox">
+                <div class="form-group form-group--checkbox">
                     <label>
                         <form:radiobutton path="institutions" value="${institutions.id}"
                                           data-name="${institutions.name}"/>
@@ -92,18 +92,20 @@
                 </div>
             </c:forEach>
             <div class="form-group--buttons">
+                <button type="button" class="btn prev-step">poprzedni krok</button>
                 <button type="button" class="btn next-step">kolejny krok</button>
             </div>
         </div>
 
         <div data-step="3">
             <p>podaj ilość pakowanych worków</p>
-            <div class="form-group--inline">
+            <div class="form-group form-group--inline">
                 <label>
                     <form:input path="quantity" type="number" step="1" min="1"/>
                 </label>
             </div>
             <div class="form-group--buttons">
+                <button type="button" class="btn prev-step">poprzedni krok</button>
                 <button type="button" class="btn next-step">kolejny krok</button>
             </div>
         </div>
@@ -111,45 +113,39 @@
         <div data-step="4">
             <p>podaj dane odbioru dla kuriera</p>
             <div class="form-section form-section--columns">
-                <div class="form-section--columns">
+                <div class="form-section--column">
                     <p>adres do odbioru</p>
                     <div class="form-group form-group--inline">
                         <label>
                             Ulica
-                            <form:input path="street"/>
+                            <form:input path="street" cssClass="street"/>
                         </label><br>
                     </div>
                     <div class="form-group form-group--inline">
                         <label>
                             Miasto
-                            <form:input path="city"/>
+                            <form:input path="city" cssClass="city"/>
                         </label><br>
                     </div>
                     <div class="form-group form-group--inline">
                         <label>
                             Kod pocztowy
-                            <form:input path="zipCode"/>
+                            <form:input path="zipCode" cssClass="zipCode"/>
                         </label><br>
                     </div>
-                        <%--                <div class="form-group form-group--inline">--%>
-                        <%--                    <label>--%>
-                        <%--                        Numer telefonu--%>
-                        <%--                        <form:input path="phone"/>--%>
-                        <%--                    </label><br>--%>
-                        <%--                </div>--%>
-                        <%--            </div>--%>
-                    <div class="form-section--columns">
+
+                    <div class="form-section--column">
                         <p>podaj termin odbioru przez kuriera</p>
                         <div class="form-group form-group--inline">
                             <label>
                                 Data
-                                <form:input path="pickUpDate" type="date"/>
+                                <form:input path="pickUpDate" type="date" cssClass="date"/>
                             </label><br>
                         </div>
                         <div class="form-group form-group--inline">
                             <label>
                                 Godzina
-                                <form:input path="pickUpTime" type="time"/>
+                                <form:input path="pickUpTime" type="time" cssClass="time"/>
                             </label><br>
                         </div>
                         <div class="form-group form-group--inline">
@@ -162,29 +158,12 @@
                 </div>
             </div>
             <div class="form-group form-group--buttons">
+                <button type="button" class="btn prev-step">poprzedni krok</button>
+
                 <input type="submit" class="btn" value="zapisz">
             </div>
         </div>
 
-
-            <%--    <form:checkboxes path="categories"--%>
-                <%--                     items="${categories}" id="categories" itemLabel="name" /><br>--%>
-                <%--    <p>wybierz instytucję</p>--%>
-                <%--    <form:select path="institutions" items="${institutions}" id="institutions" itemLabel="name" /><br>--%>
-                <%--    <p>wprowadź kod pocztowy</p>--%>
-                <%--    <form:input path="zipCode"/><br>--%>
-                <%--    <p>ulica</p>--%>
-                <%--    <form:input path="street"/><br>--%>
-                <%--    <p>miasto</p>--%>
-                <%--    <form:input path="city"/><br>--%>
-                <%--    <p>ilość</p>--%>
-                <%--    <form:input path="quantity"/><br>--%>
-                <%--    <p>komentarz</p>--%>
-                <%--    <form:textarea path="pickUpComment"/><br>--%>
-                <%--    <p>podaj datę i godzinę</p>--%>
-                <%--    <form:input type="date" path="pickUpDate"/>--%>
-                <%--    <form:input type="time" path="pickUpTime"/><br>--%>
-                <%--    <input type="submit" value="Zapisz">--%>
             </form:form>
         </div>
 </section>
