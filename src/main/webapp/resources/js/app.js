@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 
     /**
      * Form Select
@@ -6,9 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     class FormSelect {
         constructor($el) {
             this.$el = $el;
-            this.options = [...$el.children
-        ]
-            ;
+            this.options = [...$el.children];
             this.init();
         }
 
@@ -32,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.ul = document.createElement("ul");
 
             // All list options
-            this.options.forEach((el, i) = > {
+            this.options.forEach((el, i) => {
                 const li = document.createElement("li");
             li.dataset.value = el.value;
             li.innerText = el.innerText;
@@ -47,8 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             this.ul.appendChild(li);
-        })
-            ;
+        });
 
             this.dropdown.appendChild(this.ul);
             this.dropdown.appendChild(this.valueInput);
@@ -56,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         addEvents() {
-            this.dropdown.addEventListener("click", e = > {
+            this.dropdown.addEventListener("click", e => {
                 const target = e.target;
             this.dropdown.classList.toggle("selecting");
 
@@ -65,20 +62,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.valueInput.value = target.dataset.value;
                 this.current.innerText = target.innerText;
             }
-        })
-            ;
+        });
         }
     }
-
-    document.querySelectorAll(".form-group--dropdown select").forEach(el = > {
+    document.querySelectorAll(".form-group--dropdown select").forEach(el => {
         new FormSelect(el);
-})
-    ;
+});
 
     /**
      * Hide elements when clicked on document
      */
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
         const target = e.target;
         const tagName = target.tagName;
 
@@ -92,10 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return false;
         }
 
-        document.querySelectorAll(".form-group--dropdown .dropdown").forEach(el = > {
+        document.querySelectorAll(".form-group--dropdown .dropdown").forEach(el => {
             el.classList.remove("selecting");
-    })
-        ;
+    });
     });
 
     /**
@@ -111,11 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             this.$stepInstructions = form.querySelectorAll(".form--steps-instructions p");
             const $stepForms = form.querySelectorAll("form > div");
-            this.slides = [...this.$stepInstructions,
-        ...
-            $stepForms
-        ]
-            ;
+            this.slides = [...this.$stepInstructions, ...$stepForms];
 
             this.init();
         }
@@ -133,31 +122,25 @@ document.addEventListener("DOMContentLoaded", function () {
          */
         events() {
             // Next step
-            this.$next.forEach(btn = > {
-                btn.addEventListener("click", e = > {
+            this.$next.forEach(btn => {
+                btn.addEventListener("click", e => {
                     e.preventDefault();
             this.currentStep++;
             this.updateForm();
-        })
-            ;
-        })
-            ;
+        });
+        });
 
             // Previous step
-            this.$prev.forEach(btn = > {
-                btn.addEventListener("click", e = > {
+            this.$prev.forEach(btn => {
+                btn.addEventListener("click", e => {
                     e.preventDefault();
             this.currentStep--;
             this.updateForm();
-        })
-            ;
-        })
-            ;
+        });
+        });
 
             // Form submit
-            this.$form.querySelector("form").addEventListener("submit", e = > this.submit(e)
-        )
-            ;
+            this.$form.querySelector("form").addEventListener("submit", e => this.submit(e));
         }
 
         /**
@@ -169,14 +152,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // TODO: Validation
 
-            this.slides.forEach(slide = > {
+            this.slides.forEach(slide => {
                 slide.classList.remove("active");
 
             if (slide.dataset.step == this.currentStep) {
                 slide.classList.add("active");
             }
-        })
-            ;
+        });
 
             this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
             this.$step.parentElement.hidden = this.currentStep >= 5;
