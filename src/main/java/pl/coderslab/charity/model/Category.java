@@ -1,6 +1,7 @@
 package pl.coderslab.charity.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -12,13 +13,11 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "category")
+@NoArgsConstructor
+@Table(name = "categories")
 public class Category extends AbstractEntity {
 
     private String name;
     @ManyToMany(mappedBy = "categories")
     private List<Donation> donations = new ArrayList<>();
-    public Category() {
-    }
-
 }

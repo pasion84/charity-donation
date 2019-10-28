@@ -1,6 +1,7 @@
 package pl.coderslab.charity.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,7 +14,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "donation")
+@NoArgsConstructor
+@Table(name = "donations")
 public class Donation extends AbstractEntity {
     private Integer quantity;
     @ManyToMany
@@ -33,9 +35,4 @@ public class Donation extends AbstractEntity {
     private LocalTime pickUpTime;
     @Column(name = "pick_up_comment")
     private String pickUpComment;
-
-    public Donation() {
-    }
-
-
 }

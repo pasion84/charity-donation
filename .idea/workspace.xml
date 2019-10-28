@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32a6563d-7421-44e2-8f66-d78199e50e46" name="Default Changelist" comment="" />
+    <list default="true" id="32a6563d-7421-44e2-8f66-d78199e50e46" name="Default Changelist" comment="zapisywanie nowej">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/META-INF/application.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/controllers/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/dto/RegistrationFormDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/services/RegistrationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Donation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Donation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Institution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Institution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/repositories/DonationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/repositories/DonationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/HomeController.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,25 +44,39 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1SW7zXT4U1kJt49AZ5ixu9snsNt" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -100,6 +133,13 @@
       <option name="presentableId" value="Default" />
       <updated>1571667761100</updated>
       <workItem from="1571667767117" duration="3791000" />
+      <workItem from="1571754973926" duration="5933000" />
+      <workItem from="1571836798371" duration="2204000" />
+      <workItem from="1571842129392" duration="1308000" />
+      <workItem from="1572019803628" duration="5372000" />
+      <workItem from="1572076689022" duration="7809000" />
+      <workItem from="1572085201018" duration="14909000" />
+      <workItem from="1572219025296" duration="9430000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1571673104984</created>
@@ -115,7 +155,63 @@
       <option name="project" value="LOCAL" />
       <updated>1571673426922</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="encja Institution">
+      <created>1571677563623</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571677563623</updated>
+    </task>
+    <task id="LOCAL-00004" summary="encja Donation">
+      <created>1571678315803</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571678315803</updated>
+    </task>
+    <task id="LOCAL-00005" summary="DTO">
+      <created>1571756823334</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571756823334</updated>
+    </task>
+    <task id="LOCAL-00006" summary="donation controller.">
+      <created>1571759968285</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1571759968285</updated>
+    </task>
+    <task id="LOCAL-00007" summary="poprawa encji">
+      <created>1572021505293</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1572021505293</updated>
+    </task>
+    <task id="LOCAL-00008" summary="zapisywanie nowej">
+      <created>1572085303609</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1572085303609</updated>
+    </task>
+    <task id="LOCAL-00009" summary="zapisywanie nowej">
+      <created>1572095351027</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572095351027</updated>
+    </task>
+    <task id="LOCAL-00010" summary="poprawiony formularz dodawania nowej darowizny. Dodatkowo zrobione sumowanie worków, oraz ilości wspartych organizacji.">
+      <created>1572100022890</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1572100022890</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,18 +222,42 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/charity-donation" />
     </ignored-roots>
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="encja Institution" />
+    <MESSAGE value="encja Donation" />
+    <MESSAGE value="DTO" />
+    <MESSAGE value="donation controller." />
+    <MESSAGE value="poprawa encji" />
+    <MESSAGE value="zapisywanie nowej" />
+    <MESSAGE value="poprawiony formularz dodawania nowej darowizny. Dodatkowo zrobione sumowanie worków, oraz ilości wspartych organizacji." />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawiony formularz dodawania nowej darowizny. Dodatkowo zrobione sumowanie worków, oraz ilości wspartych organizacji." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/charity/controllers/DonationController.java</url>
+          <line>56</line>
+          <properties class="pl.coderslab.charity.controllers.DonationController" method="processAddDonation">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
