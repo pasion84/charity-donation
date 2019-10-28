@@ -28,6 +28,7 @@ public class DonationController {
     private InstitutionRepository institutionRepository;
     private DonationService donationService;
 
+    //    controlle powinien uzywać tylko z serwisów
     public DonationController(CategoryService categoryService, CategoryRepository categoryRepository, InstitutionService institutionService, InstitutionRepository institutionRepository, DonationService donationService) {
         this.categoryService = categoryService;
         this.categoryRepository = categoryRepository;

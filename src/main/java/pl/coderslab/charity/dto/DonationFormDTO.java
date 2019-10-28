@@ -9,11 +9,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
-@Getter(value = AccessLevel.PUBLIC)
+@Data
 public class DonationFormDTO {
     private Integer quantity;
     private List<Category> categories = new ArrayList<>();

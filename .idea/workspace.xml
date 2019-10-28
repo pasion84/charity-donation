@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32a6563d-7421-44e2-8f66-d78199e50e46" name="Default Changelist" comment="zapisywanie nowej">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/META-INF/application.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/controllers/RegistrationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/dto/RegistrationFormDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/services/RegistrationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="32a6563d-7421-44e2-8f66-d78199e50e46" name="Default Changelist" comment="poprawki w encjach, stworzenie uzytkownika">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Donation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Donation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Institution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Institution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/repositories/DonationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/repositories/DonationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/configuration/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/controllers/DonationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/controllers/DonationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/dto/DonationFormDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/dto/DonationFormDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/CharityApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/HomeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/model/AbstractEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/model/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/repositories/CategoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/charity/services/CategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/coderslab/charity/CharityApplicationTests.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,10 +67,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="last_opened_file_path" value="$MAVEN_REPOSITORY$/antlr/antlr/2.7.7/antlr-2.7.7.jar!/" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -139,7 +134,11 @@
       <workItem from="1572019803628" duration="5372000" />
       <workItem from="1572076689022" duration="7809000" />
       <workItem from="1572085201018" duration="14909000" />
-      <workItem from="1572219025296" duration="9430000" />
+      <workItem from="1572219025296" duration="13039000" />
+      <workItem from="1572234943520" duration="1318000" />
+      <workItem from="1572236281004" duration="613000" />
+      <workItem from="1572264642734" duration="3046000" />
+      <workItem from="1572279035194" duration="2650000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1571673104984</created>
@@ -211,7 +210,28 @@
       <option name="project" value="LOCAL" />
       <updated>1572100022890</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="rejestracja użytkownika">
+      <created>1572229049460</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1572229049460</updated>
+    </task>
+    <task id="LOCAL-00012" summary="nie widzi mi spring security">
+      <created>1572265971579</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1572265971579</updated>
+    </task>
+    <task id="LOCAL-00013" summary="poprawki w encjach, stworzenie uzytkownika">
+      <created>1572279120073</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1572279120073</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +263,10 @@
     <MESSAGE value="poprawa encji" />
     <MESSAGE value="zapisywanie nowej" />
     <MESSAGE value="poprawiony formularz dodawania nowej darowizny. Dodatkowo zrobione sumowanie worków, oraz ilości wspartych organizacji." />
-    <option name="LAST_COMMIT_MESSAGE" value="poprawiony formularz dodawania nowej darowizny. Dodatkowo zrobione sumowanie worków, oraz ilości wspartych organizacji." />
+    <MESSAGE value="rejestracja użytkownika" />
+    <MESSAGE value="nie widzi mi spring security" />
+    <MESSAGE value="poprawki w encjach, stworzenie uzytkownika" />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawki w encjach, stworzenie uzytkownika" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -251,7 +274,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/charity/controllers/DonationController.java</url>
-          <line>56</line>
+          <line>57</line>
           <properties class="pl.coderslab.charity.controllers.DonationController" method="processAddDonation">
             <option name="EMULATED" value="true" />
           </properties>
