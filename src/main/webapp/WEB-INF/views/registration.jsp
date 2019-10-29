@@ -12,10 +12,10 @@
         Haslo: <form:password path="password"/>
         <form:errors path="password"/>
     </p>
-    <%--    <p>--%>
-    <%--        Powtórz hasło: <form:password path="rePassword"/>--%>
-    <%--        <form:errors path="rePassword"/>--%>
-    <%--    </p>--%>
+    <p>
+        Powtórz hasło: <form:password path="rePassword"/>
+        <form:errors path="rePassword"/>
+    </p>
     <p>
         Imie: <form:input path="firstName"/>
         <form:errors path="firstName"/>

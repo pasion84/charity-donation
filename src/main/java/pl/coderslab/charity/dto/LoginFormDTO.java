@@ -1,10 +1,8 @@
 package pl.coderslab.charity.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
-@Getter
-@NoArgsConstructor
+@Data
 public class LoginFormDTO {
     private String email;
     private String password;

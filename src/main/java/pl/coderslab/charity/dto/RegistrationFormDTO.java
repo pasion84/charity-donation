@@ -16,6 +16,8 @@ public class RegistrationFormDTO {
     @NotBlank
     private String password;
     @NotBlank
+    private String rePassword;
+    @NotBlank
     private String role;
     @NotBlank
     @Pattern(regexp = "[1-9][0-9]{8}", message = "nr telefonu składa się z 9 liczb")

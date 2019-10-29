@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:url value="/" var="mainURL"/>
 <!DOCTYPE html>
 <html lang="pl">
@@ -17,8 +19,24 @@
 <header class="header--main-page">
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-            <li><a href="${mainURL}register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+            <sec:authorize access="isAuthenticated()">
+                <form action="<c:url value="/logout"/>">
+                    <li>
+<%--                        <p class="btn btn--small btn--without-border">Witaj <sec:authentication property="username"/></p>--%>
+                        <a href="${mainURL}logout" class="btn btn--small btn--without-border">Wyloguj</a>
+                    </li>
+                </form>
+            </sec:authorize>
+            <%--            <c:choose>--%>
+            <%--                <c:when test="${sessionScope.User.getName() != null}">--%>
+            <%--                    <li><p class="form-group"><Witaj ${sessionScope.User.getName()}></p></li>--%>
+            <%--                    <li><a href="${mainURL}logout" class="btn btn--small btn--without-border">Wyloguj</a></li>--%>
+            <%--                </c:when>--%>
+            <%--                <c:otherwise>--%>
+                                <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
+                                <li><a href="${mainURL}register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+            <%--                </c:otherwise>--%>
+            <%--            </c:choose>--%>
         </ul>
 
         <ul>
