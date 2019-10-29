@@ -8,8 +8,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.coderslab.charity.services.user.SpringDataUserDetailsService;
 
 import javax.sql.DataSource;
 
@@ -54,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
 //                główna strona dozwolona dla wszystkich
                 .antMatchers("/").permitAll()
-                .antMatchers("/register").permitAll()
+                .antMatchers("/user/register").permitAll()
                 .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin();
@@ -65,5 +68,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/resources/**");
+    }
+    @Bean
+    public SpringDataUserDetailsService customUserDetailsService(){
+      return new SpringDataUserDetailsService();
     }
 }

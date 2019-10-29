@@ -20,6 +20,13 @@ public class DonationService {
         this.institutionService = institutionService;
     }
 
+    public Integer sumOfAllDonations(){
+        return donationRepository.sumOfAllDonations();
+    }
+    public Integer sumOfAllOrganizations(){
+        return donationRepository.sumOfAllSupportedOrganizations();
+    }
+
     public void addNewDonation(DonationFormDTO dto) {
         Donation donation = new Donation();
         donation.setCategories(dto.getCategories());

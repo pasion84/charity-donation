@@ -18,35 +18,38 @@
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
-        <ul class="nav--actions">
-            <sec:authorize access="isAuthenticated()">
-                <form action="<c:url value="/logout"/>">
-                    <li>
-<%--                        <p class="btn btn--small btn--without-border">Witaj <sec:authentication property="username"/></p>--%>
-                        <a href="${mainURL}logout" class="btn btn--small btn--without-border">Wyloguj</a>
-                    </li>
-                </form>
-            </sec:authorize>
-            <%--            <c:choose>--%>
-            <%--                <c:when test="${sessionScope.User.getName() != null}">--%>
-            <%--                    <li><p class="form-group"><Witaj ${sessionScope.User.getName()}></p></li>--%>
-            <%--                    <li><a href="${mainURL}logout" class="btn btn--small btn--without-border">Wyloguj</a></li>--%>
-            <%--                </c:when>--%>
-            <%--                <c:otherwise>--%>
-                                <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-                                <li><a href="${mainURL}register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
-            <%--                </c:otherwise>--%>
-            <%--            </c:choose>--%>
-        </ul>
+        <c:if test="${principal != null}">
+            <ul class="dropdown">
+                <li>
+                    <p class="btn btn--small btn--without-border">Witaj ${loggedUser.getEmail()}</p>
+                    <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
+                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
+                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
+                <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
+            </ul>
 
-        <ul>
-            <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
-            <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
-            <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
-            <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-            <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
-        </ul>
+
+        </c:if>
+        <c:if test="${principal == null}">
+            <ul class="dropdown">
+                <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
+                <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
+                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
+                <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
+            </ul>
+        </c:if>
     </nav>
 
 

@@ -1,29 +1,63 @@
 package pl.coderslab.charity;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.charity.dto.LoggedUserDTO;
+import pl.coderslab.charity.model.Institution;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repositories.DonationRepository;
+import pl.coderslab.charity.services.DonationService;
 import pl.coderslab.charity.services.InstitutionService;
+import pl.coderslab.charity.services.user.UserServiceImpl;
+
+import java.security.Principal;
+import java.util.List;
 
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 
 
     private InstitutionService institutionService;
-    private DonationRepository donationRepository;
+    private DonationService donationService;
+    private UserServiceImpl userService;
 
-    public HomeController(InstitutionService institutionService, DonationRepository donationRepository) {
+    public HomeController(InstitutionService institutionService, DonationService donationService, UserServiceImpl userService) {
         this.institutionService = institutionService;
-        this.donationRepository = donationRepository;
+        this.donationService = donationService;
+        this.userService = userService;
     }
 
-    @RequestMapping("/")
+    @ModelAttribute("principal")
+    public User principalToClient() {
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+        return userService.findUserByEmail(principal.getName());
+    }
+
+    @ModelAttribute("institutions")
+    public List<Institution> sumOfAllInstitutions(){
+        return institutionService.getAllInstitutions();
+    }
+    @ModelAttribute("sumOfAllDonations")
+    public Integer sumOfAllDonations(){
+        return donationService.sumOfAllDonations();
+    }
+    @ModelAttribute("sumOfAllSupportedOrganizations")
+    public Integer sumOfAllSupportedOrganizations(){
+        return donationService.sumOfAllOrganizations();
+    }
+
+
+    @GetMapping
     public String home(Model model) {
-        model.addAttribute("institutions", institutionService.getAllInstitutions());
-        model.addAttribute("sumOfAllDonations", donationRepository.sumOfAllDonations());
-        model.addAttribute("sumOfAllSupportedOrganizations", donationRepository.sumOfAllSupportedOrganizations());
+        if (principalToClient() != null){
+            model.addAttribute("loggedUser", new LoggedUserDTO(principalToClient().getFirstName()));
+        }else{ model.addAttribute("loggedUser", "aaaaa");}
         return "index";
     }
 }
