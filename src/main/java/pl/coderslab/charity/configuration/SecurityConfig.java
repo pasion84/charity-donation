@@ -17,7 +17,7 @@ import pl.coderslab.charity.services.user.SpringDataUserDetailsService;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableWebSecurity
+
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final DataSource dataSource;
@@ -49,18 +49,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/", false)
                 .and().logout().logoutSuccessUrl("/")
-                .and()
-                .csrf().disable()
+                .and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-//                główna strona dozwolona dla wszystkich
                 .antMatchers("/").permitAll()
                 .antMatchers("/user/register").permitAll()
                 .antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
-                .and().formLogin();
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated();
     }
 
     @Override

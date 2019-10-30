@@ -62,7 +62,6 @@
                     <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
                     <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
                     <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-                    <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
                     <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
                 </ul>
             </c:when>
@@ -78,7 +77,7 @@
                     <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
                     <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
                     <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-                    <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                    <li><a href="${mainURL}admin/organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
                     <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
                 </ul>
             </c:when>
@@ -92,7 +91,6 @@
                     <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
                     <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
                     <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-                    <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
                     <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
                 </ul>
             </c:otherwise>
