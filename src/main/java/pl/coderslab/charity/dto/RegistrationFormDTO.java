@@ -7,6 +7,7 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public class RegistrationFormDTO {
+    private Long id;
     @NotBlank
     private String firstName;
     @NotBlank

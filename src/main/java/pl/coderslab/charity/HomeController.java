@@ -62,8 +62,9 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model) {
-        if (principalToUser() != null && principalToAdmin() != null){
+        if (principalToUser() != null){
             model.addAttribute("loggedUser", new LoggedUserDTO(principalToUser().getFirstName()));
+        }else if (principalToAdmin() != null){
             model.addAttribute("loggedAdmin", new LoggedUserDTO(principalToAdmin().getFirstName()));
         }
         return "index";

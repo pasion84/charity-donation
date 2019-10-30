@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.coderslab.charity.services.user.SpringDataUserDetailsService;
 
 import javax.sql.DataSource;
 
@@ -65,8 +64,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/resources/**");
     }
-    @Bean
-    public SpringDataUserDetailsService customUserDetailsService(){
-      return new SpringDataUserDetailsService();
-    }
+//    @Bean
+//    public SpringDataUserDetailsService customUserDetailsService(){
+//      return new SpringDataUserDetailsService();
+//    }
 }

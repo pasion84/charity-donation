@@ -1,6 +1,5 @@
 package pl.coderslab.charity.controllers;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,29 +9,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.RegistrationFormDTO;
-import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.services.user.UserServiceImpl;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
-
+@RequestMapping("/user/edit")
+public class EditUserController {
     private UserServiceImpl userServiceImpl;
-
-
-    public UserController(UserServiceImpl userServiceImpl) {
-        this.userServiceImpl = userServiceImpl;
-    }
-
-    @ModelAttribute("role")
-    public List<Role> getAllRoles(){
-        return userServiceImpl.findAllRoles();
-    }
 
     @ModelAttribute("principalIsUser")
     public User principalToUser() {
@@ -40,20 +26,24 @@ public class UserController {
         return userServiceImpl.findUser(principal.getName());
     }
 
-    @GetMapping("/register")
-    public String prepareRegistrationPage(Model model) {
-        model.addAttribute("reg", new RegistrationFormDTO());
-        return "registration";
+
+    public EditUserController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
-    @PostMapping("/register")
-    public String processRegistrationPage(@ModelAttribute("reg") @Valid RegistrationFormDTO data, BindingResult result) {
-        if (errorsMethod(data, result)) return "registration";
-        userServiceImpl.registerUser(data);
+    @GetMapping
+    public String prepareRegistrationPage(Model model) {
+        model.addAttribute("editFormDTO", principalToUser());
+        return "editUser";
+    }
+    @PostMapping
+    public String processEditUser(@ModelAttribute("editFormDTO") @Valid RegistrationFormDTO data, BindingResult result){
+        if (errorsMethod(data, result)) return "editUser";
+        userServiceImpl.editUser(data);
         return "redirect:/";
     }
 
-    private boolean errorsMethod(@ModelAttribute("reg") @Valid RegistrationFormDTO data, BindingResult result) {
+    private boolean errorsMethod(@ModelAttribute("editFormDTO") @Valid RegistrationFormDTO data, BindingResult result) {
         if (result.hasErrors()) return true;
         if (!data.getPassword().equals(data.getRePassword())) {
             result.rejectValue("rePassword", null, "password and re password have to be match");
@@ -67,5 +57,3 @@ public class UserController {
     }
 
 }
-
-

@@ -9,6 +9,7 @@ import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repositories.RoleRepository;
 import pl.coderslab.charity.repositories.UserRepository;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -47,6 +48,19 @@ public class UserServiceImpl{
     public void registerUser(RegistrationFormDTO data) {
         User user = new User();
         Role userRole = roleRepository.findByName("ROLE_USER");
+        saveUser(data, user);
+        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
+    public void editUser(RegistrationFormDTO data){
+        User user = userRepository.findUser(data.getEmail());
+        saveUser(data, user);
+        userRepository.save(user);
+
+    }
+
+    private void saveUser(RegistrationFormDTO data, User user) {
         String encodedPassword = passwordEncoder.encode(data.getPassword());
         String encodedRePassword = passwordEncoder.encode(data.getRePassword());
         user.setFirstName(data.getFirstName());
@@ -55,10 +69,7 @@ public class UserServiceImpl{
         user.setPassword(encodedPassword);
         user.setPassword(encodedRePassword);
         user.setPhone(data.getPhone());
-        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
-        userRepository.save(user);
     }
-
 //    @Override
 //    public User findByEmail(String email) {
 //        return null;

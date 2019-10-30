@@ -53,13 +53,14 @@
             <c:when test="${principalIsUser != null}">
                 <ul class="dropdown">
                     <li>
-                        <p class="btn btn--small btn--without-border">Witaj ${loggedUser}</p>
+                        <p class="btn btn--small btn--without-border">Witaj ${loggedUser.getEmail()}</p>
                         <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>
                     </li>
                 </ul>
                 <ul>
                     <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
                     <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                    <li><a href="${mainURL}user/edit" class="btn btn--without-border">Edytuj dane</a></li>
                     <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
                     <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
                     <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
@@ -68,7 +69,7 @@
             <c:when test="${principalIsAdmin != null}">
                 <ul class="dropdown">
                     <li>
-                        <p class="btn btn--small btn--without-border">Witaj ${loggedAdmin}</p>
+                        <p class="btn btn--small btn--without-border">Witaj ${loggedAdmin.getEmail()}</p>
                         <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>
                     </li>
                 </ul>
