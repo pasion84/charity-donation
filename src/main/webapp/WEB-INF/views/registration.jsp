@@ -28,14 +28,14 @@
         Nr telefonu: <form:input path="phone"/>
         <form:errors path="phone"/>
     </p>
-    <p>
-        Rola:
-        <form:select path="role">
-            <form:option value="ROLE_ADMIN">ADMIN</form:option>
-            <form:option value="ROLE_USER">USER</form:option>
-        </form:select>
-        <form:errors path="role"/>
-    </p>
+<%--    <p>--%>
+<%--        Rola:--%>
+<%--        <form:select path="role">--%>
+<%--            <form:option value="ROLE_ADMIN">ADMIN</form:option>--%>
+<%--            <form:option value="ROLE_USER">USER</form:option>--%>
+<%--        </form:select>--%>
+<%--        <form:errors path="role"/>--%>
+<%--    </p>--%>
 
     <p>
         <input type="submit" value="Zarejestruj">

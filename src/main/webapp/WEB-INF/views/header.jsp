@@ -18,38 +18,85 @@
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
-        <c:if test="${principal != null}">
-            <ul class="dropdown">
-                <li>
-                    <p class="btn btn--small btn--without-border">Witaj ${loggedUser.getEmail()}</p>
-                    <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>
-                </li>
-            </ul>
-            <ul>
-                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
-                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
-                <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
-                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-                <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
-                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
-            </ul>
+<%--        <c:if test="${principalIsUser != null}">--%>
+<%--            <ul class="dropdown">--%>
+<%--                <li>--%>
+<%--                    <p class="btn btn--small btn--without-border">Witaj ${principalIsUser.getEmail()}</p>--%>
+<%--                    <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
+<%--            <ul>--%>
+<%--                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>--%>
+<%--                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
+<%--                <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>--%>
+<%--                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>--%>
+<%--                <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>--%>
+<%--                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>--%>
+<%--            </ul>--%>
 
+<%--        </c:if>--%>
+<%--        <c:if test="${principalIsUser == null}">--%>
+<%--            <ul class="dropdown">--%>
+<%--                <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>--%>
+<%--                <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>--%>
+<%--            </ul>--%>
 
-        </c:if>
-        <c:if test="${principal == null}">
-            <ul class="dropdown">
-                <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-                <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
-            </ul>
+<%--            <ul>--%>
+<%--                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>--%>
+<%--                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
+<%--                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>--%>
+<%--                <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>--%>
+<%--                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>--%>
+<%--            </ul>--%>
+<%--        </c:if>--%>
+        <c:choose>
+            <c:when test="${principalIsUser != null}">
+                <ul class="dropdown">
+                    <li>
+                        <p class="btn btn--small btn--without-border">Witaj ${loggedUser}</p>
+                        <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
+                    <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                    <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
+                    <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
+                    <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                    <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
+                </ul>
+            </c:when>
+            <c:when test="${principalIsAdmin != null}">
+                <ul class="dropdown">
+                    <li>
+                        <p class="btn btn--small btn--without-border">Witaj ${loggedAdmin}</p>
+                        <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
+                    <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                    <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
+                    <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
+                    <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                    <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
+                </ul>
+            </c:when>
+            <c:otherwise>
+                <ul class="dropdown">
+                    <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
+                    <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+                </ul>
 
-            <ul>
-                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
-                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
-                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-                <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
-                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
-            </ul>
-        </c:if>
+                <ul>
+                    <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
+                    <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                    <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
+                    <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                    <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
+                </ul>
+            </c:otherwise>
+        </c:choose>
     </nav>
 
 

@@ -35,10 +35,11 @@ public class UserController {
     public List<Role> getAllRoles(){
         return userServiceImpl.findAllRoles();
     }
+
     @ModelAttribute("principal")
     public User principalToClient() {
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
-        return userServiceImpl.findUserByEmail(principal.getName());
+        return userServiceImpl.findByEmail(principal.getName());
     }
 
 

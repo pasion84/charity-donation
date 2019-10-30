@@ -33,11 +33,18 @@ public class HomeController {
         this.userService = userService;
     }
 
-    @ModelAttribute("principal")
-    public User principalToClient() {
+    @ModelAttribute("principalIsUser")
+    public User principalToUser() {
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
-        return userService.findUserByEmail(principal.getName());
+        return userService.findUser(principal.getName());
     }
+
+    @ModelAttribute("principalIsAdmin")
+    public User principalToAdmin() {
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+        return userService.findAdmin(principal.getName());
+    }
+
 
     @ModelAttribute("institutions")
     public List<Institution> sumOfAllInstitutions(){
@@ -55,9 +62,10 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model) {
-        if (principalToClient() != null){
-            model.addAttribute("loggedUser", new LoggedUserDTO(principalToClient().getFirstName()));
-        }else{ model.addAttribute("loggedUser", "aaaaa");}
+        if (principalToUser() != null && principalToAdmin() != null){
+            model.addAttribute("loggedUser", new LoggedUserDTO(principalToUser().getFirstName()));
+            model.addAttribute("loggedAdmin", new LoggedUserDTO(principalToAdmin().getFirstName()));
+        }
         return "index";
     }
 }

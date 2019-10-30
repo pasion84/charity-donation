@@ -32,8 +32,12 @@ public class UserServiceImpl implements UserService {
         return count <= 0;
     }
 
-    public User findUserByEmail(String email){
-        return userRepository.findByEmail(email);
+    public User findUser(String email){
+        return userRepository.findUser(email);
+    }
+
+    public User findAdmin(String email){
+        return userRepository.findAdmin(email);
     }
 
     public List<Role>findAllRoles(){

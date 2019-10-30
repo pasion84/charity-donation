@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.LoginFormDTO;
 
-import java.security.Principal;
 
 @Controller
 @RequestMapping("/login")
