@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl{
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
@@ -59,16 +59,16 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @Override
-    public User findByEmail(String email) {
-        return null;
-    }
-
-    @Override
-    public void saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByName("ROLE_USER");
-        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
-        userRepository.save(user);
-    }
+//    @Override
+//    public User findByEmail(String email) {
+//        return null;
+//    }
+//
+//    @Override
+//    public void saveUser(User user) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        Role userRole = roleRepository.findByName("ROLE_USER");
+//        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+//        userRepository.save(user);
+//    }
 }

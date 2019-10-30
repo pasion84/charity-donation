@@ -13,14 +13,10 @@ import pl.coderslab.charity.repositories.UserRepository;
 @Transactional
 public class DonationService {
     private DonationRepository donationRepository;
-    private CategoryRepository categoryRepository;
-    private InstitutionService institutionService;
     private UserRepository userRepository;
 
-    public DonationService(DonationRepository donationRepository, CategoryRepository categoryRepository, InstitutionService institutionService, UserRepository userRepository) {
+    public DonationService(DonationRepository donationRepository, UserRepository userRepository) {
         this.donationRepository = donationRepository;
-        this.categoryRepository = categoryRepository;
-        this.institutionService = institutionService;
         this.userRepository = userRepository;
     }
 

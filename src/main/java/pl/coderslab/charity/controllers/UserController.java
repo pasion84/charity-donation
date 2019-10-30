@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.RegistrationFormDTO;
 import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.User;
-import pl.coderslab.charity.services.user.CurrentUser;
 import pl.coderslab.charity.services.user.UserServiceImpl;
 
 import javax.jws.soap.SOAPBinding;
@@ -36,10 +35,16 @@ public class UserController {
         return userServiceImpl.findAllRoles();
     }
 
-    @ModelAttribute("principal")
-    public User principalToClient() {
+    @ModelAttribute("principalIsUser")
+    public User principalToUser() {
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
-        return userServiceImpl.findByEmail(principal.getName());
+        return userServiceImpl.findUser(principal.getName());
+    }
+
+    @ModelAttribute("principalIsAdmin")
+    public User principalToAdmin() {
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+        return userServiceImpl.findAdmin(principal.getName());
     }
 
 

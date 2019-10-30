@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.DonationFormDTO;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.repositories.CategoryRepository;
-import pl.coderslab.charity.repositories.InstitutionRepository;
 import pl.coderslab.charity.services.CategoryService;
 import pl.coderslab.charity.services.DonationService;
 import pl.coderslab.charity.services.InstitutionService;
@@ -23,28 +21,23 @@ import java.util.List;
 @RequestMapping("/donation")
 public class DonationController {
     private CategoryService categoryService;
-    private CategoryRepository categoryRepository;
     private InstitutionService institutionService;
-    private InstitutionRepository institutionRepository;
     private DonationService donationService;
 
-    //    controlle powinien uzywać tylko z serwisów
-    public DonationController(CategoryService categoryService, CategoryRepository categoryRepository, InstitutionService institutionService, InstitutionRepository institutionRepository, DonationService donationService) {
+    public DonationController(CategoryService categoryService, InstitutionService institutionService, DonationService donationService) {
         this.categoryService = categoryService;
-        this.categoryRepository = categoryRepository;
         this.institutionService = institutionService;
-        this.institutionRepository = institutionRepository;
         this.donationService = donationService;
     }
 
     @ModelAttribute("categories")
     public List<Category> categoryList() {
-        return categoryRepository.findAll();
+        return categoryService.findAllCategories();
     }
 
     @ModelAttribute("institutions")
     public List<Institution> institutionList() {
-        return institutionRepository.findAll();
+        return institutionService.getAllInstitutions();
     }
 
     @GetMapping
