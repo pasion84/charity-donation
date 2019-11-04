@@ -1,5 +1,6 @@
 package pl.coderslab.charity;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repositories.DonationRepository;
 import pl.coderslab.charity.services.DonationService;
 import pl.coderslab.charity.services.InstitutionService;
+import pl.coderslab.charity.services.user.CurrentUser;
 import pl.coderslab.charity.services.user.UserServiceImpl;
 
 import java.security.Principal;
@@ -33,17 +35,17 @@ public class HomeController {
         this.userService = userService;
     }
 
-    @ModelAttribute("principalIsUser")
+    @ModelAttribute("principal")
     public User principalToUser() {
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
-        return userService.findUser(principal.getName());
+        return userService.findByEmail(principal.getName());
     }
 
-    @ModelAttribute("principalIsAdmin")
-    public User principalToAdmin() {
-        Principal principal = SecurityContextHolder.getContext().getAuthentication();
-        return userService.findAdmin(principal.getName());
-    }
+//    @ModelAttribute("principalIsAdmin")
+//    public User principalToAdmin() {
+//        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+//        return userService.findAdmin(principal.getName());
+//    }
 
 
     @ModelAttribute("institutions")
@@ -61,11 +63,11 @@ public class HomeController {
 
 
     @GetMapping
-    public String home(Model model) {
+    public String home(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         if (principalToUser() != null){
             model.addAttribute("loggedUser", new LoggedUserDTO(principalToUser().getFirstName()));
-        }else if (principalToAdmin() != null){
-            model.addAttribute("loggedAdmin", new LoggedUserDTO(principalToAdmin().getFirstName()));
+//        }else if (principalToAdmin() != null){
+//            model.addAttribute("loggedAdmin", new LoggedUserDTO(principalToAdmin().getFirstName()));
         }
         return "index";
     }

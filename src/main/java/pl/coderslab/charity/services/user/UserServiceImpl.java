@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class UserServiceImpl{
+public class UserServiceImpl implements UserService{
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
@@ -33,13 +33,10 @@ public class UserServiceImpl{
         return count <= 0;
     }
 
-    public User findUser(String email){
-        return userRepository.findUser(email);
-    }
 
-    public User findAdmin(String email){
-        return userRepository.findAdmin(email);
-    }
+//    public User findAdmin(String email){
+//        return userRepository.findAdmin(email);
+//    }
 
     public List<Role>findAllRoles(){
         return roleRepository.findAll();
@@ -54,7 +51,7 @@ public class UserServiceImpl{
     }
 
     public void editUser(RegistrationFormDTO data){
-        User user = userRepository.findUser(data.getEmail());
+        User user = userRepository.findByEmail(data.getEmail());
         saveUser(data, user);
         userRepository.save(user);
 
@@ -70,11 +67,11 @@ public class UserServiceImpl{
         user.setPassword(encodedRePassword);
         user.setPhone(data.getPhone());
     }
-//    @Override
-//    public User findByEmail(String email) {
-//        return null;
-//    }
-//
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
 //    @Override
 //    public void saveUser(User user) {
 //        user.setPassword(passwordEncoder.encode(user.getPassword()));

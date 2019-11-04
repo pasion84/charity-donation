@@ -37,7 +37,7 @@ public class UserController {
     @ModelAttribute("principalIsUser")
     public User principalToUser() {
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
-        return userServiceImpl.findUser(principal.getName());
+        return userServiceImpl.findByEmail(principal.getName());
     }
 
     @GetMapping("/register")

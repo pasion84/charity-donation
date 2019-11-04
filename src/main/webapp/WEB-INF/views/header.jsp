@@ -18,84 +18,59 @@
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
-<%--        <c:if test="${principalIsUser != null}">--%>
-<%--            <ul class="dropdown">--%>
-<%--                <li>--%>
-<%--                    <p class="btn btn--small btn--without-border">Witaj ${principalIsUser.getEmail()}</p>--%>
-<%--                    <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
-<%--            <ul>--%>
-<%--                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>--%>
-<%--                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
-<%--                <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>--%>
-<%--                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>--%>
-<%--                <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>--%>
-<%--                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>--%>
-<%--            </ul>--%>
 
-<%--        </c:if>--%>
-<%--        <c:if test="${principalIsUser == null}">--%>
-<%--            <ul class="dropdown">--%>
-<%--                <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>--%>
-<%--                <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>--%>
-<%--            </ul>--%>
+        <sec:authorize access="!isAuthenticated()">
+            <ul class="dropdown">
+                <li>
+                <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
+                <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
 
-<%--            <ul>--%>
-<%--                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>--%>
-<%--                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
-<%--                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>--%>
-<%--                <li><a href="${mainURL}#organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>--%>
-<%--                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>--%>
-<%--            </ul>--%>
-<%--        </c:if>--%>
-        <c:choose>
-            <c:when test="${principalIsUser != null}">
-                <ul class="dropdown">
-                    <li>
-                        <p class="btn btn--small btn--without-border">Witaj ${loggedUser.getEmail()}</p>
-                        <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
-                    <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                    <%--                        <p class="btn btn--small btn--without-border">Witaj ${loggedUser.getEmail()}</p>--%>
+                    <%--                        <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>--%>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
+                <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                <sec:authorize access="hasRole('USER')">
                     <li><a href="${mainURL}user/edit" class="btn btn--without-border">Edytuj dane</a></li>
-                    <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
-                    <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-                    <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
-                </ul>
-            </c:when>
-            <c:when test="${principalIsAdmin != null}">
-                <ul class="dropdown">
-                    <li>
-                        <p class="btn btn--small btn--without-border">Witaj ${loggedAdmin.getEmail()}</p>
-                        <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
-                    <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
-                    <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
-                    <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-                    <li><a href="${mainURL}admin/organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
-                    <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
-                </ul>
-            </c:when>
-            <c:otherwise>
-                <ul class="dropdown">
-                    <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-                    <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
-                </ul>
+                </sec:authorize>
+                <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
+                <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
+                <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
+            </ul>
+        </sec:authorize>
+        <%--            </c:when>--%>
+        <%--            <c:when test="${principalIsAdmin != null}">--%>
+        <%--                <ul class="dropdown">--%>
+        <%--                    <li>--%>
+        <%--                        <p class="btn btn--small btn--without-border">Witaj ${loggedAdmin.getEmail()}</p>--%>
+        <%--                        <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>--%>
+        <%--                    </li>--%>
+        <%--                </ul>--%>
+        <%--                <ul>--%>
+        <%--                    <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>--%>
+        <%--                    <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
+        <%--                    <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>--%>
+        <%--                    <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>--%>
+        <%--                    <li><a href="${mainURL}admin/organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>--%>
+        <%--                    <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>--%>
+        <%--                </ul>--%>
+        <%--&lt;%&ndash;            </c:when>&ndash;%&gt;--%>
+        <%--&lt;%&ndash;            <c:otherwise>&ndash;%&gt;--%>
+        <%--                <ul class="dropdown">--%>
+        <%--                    <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>--%>
+        <%--                    <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>--%>
+        <%--                </ul>--%>
 
-                <ul>
-                    <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>
-                    <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
-                    <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>
-                    <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>
-                </ul>
-            </c:otherwise>
-        </c:choose>
+        <%--                <ul>--%>
+        <%--                    <li><a href="${mainURL}" class="btn btn--without-border active">Start</a></li>--%>
+        <%--                    <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
+        <%--                    <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>--%>
+        <%--                    <li><a href="${mainURL}#kontakt" class="btn btn--without-border">Kontakt</a></li>--%>
+        <%--                </ul>--%>
+        <%--            </c:otherwise>--%>
+        <%--        </c:choose>--%>
     </nav>
 
 

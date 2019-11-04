@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="header.jsp"/>
@@ -14,6 +15,7 @@
     </c:when>
 </c:choose>
 <form:form method="post" modelAttribute="data">
+    <sec:csrfInput/>
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <form:input path="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -25,6 +27,7 @@
         <form:password path="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form:form>
 <br>
 <jsp:include page="footer.jsp"/>
