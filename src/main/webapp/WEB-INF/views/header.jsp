@@ -19,11 +19,18 @@
 <header class="header--main-page">
     <nav class="container container--70">
 
-        <sec:authorize access="!isAuthenticated()">
+
             <ul class="dropdown">
                 <li>
+                    <sec:authorize access="!isAuthenticated()">
                 <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
                 <li><a href="${mainURL}user/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                <li><a href="${mainURL}login" class="btn btn--small btn--without-border">Witaj </a></li>
+                <li><a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a></li>
+
+
 
                     <%--                        <p class="btn btn--small btn--without-border">Witaj ${loggedUser.getEmail()}</p>--%>
                     <%--                        <a href="${mainURL}logout" class="btn btn--small btn--highlighted">Wyloguj</a>--%>
@@ -34,6 +41,9 @@
                 <li><a href="${mainURL}#steps" class="btn btn--without-border">O co chodzi?</a></li>
                 <sec:authorize access="hasRole('USER')">
                     <li><a href="${mainURL}user/edit" class="btn btn--without-border">Edytuj dane</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ADMIN')">
+                    <li><a href="${mainURL}admin/organizations" class="btn btn--without-border">Fundacje i organizacje</a></li>
                 </sec:authorize>
                 <li><a href="${mainURL}donation" class="btn btn--without-border">Przekarz dary</a></li>
                 <li><a href="${mainURL}#about" class="btn btn--without-border">O nas</a></li>

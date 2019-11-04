@@ -11,13 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.coderslab.charity.services.user.SpringDataUserDetailsService;
 
 import javax.sql.DataSource;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final DataSource dataSource;
@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.dataSource = dataSource;
     }
 
+//    pozmieniać metodę tak jak na slacku
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -43,10 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
                 .authoritiesByUsernameQuery("" +
-                        "select u.first_name, r.name from users as u " +
+                        "select u.email, r.name from users as u " +
                         "left outer join users_roles as ur on(u.id=ur.user_id)" +
                         "left outer join user_role as r on(ur.roles_id = r.id) " +
-                        "where u.email = ? and u.password = ?");
+                        "where u.email = ?");
     }
 
     @Override
@@ -54,17 +55,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .loginPage("/login")
-                .usernameParameter("u.email")
-                .passwordParameter("u.password")
-                .and().logout().logoutSuccessUrl("/")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .and().logout().logoutSuccessUrl("/").permitAll()
                 .and().csrf().and()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/user/register").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .and().logout().logoutSuccessUrl("/")
-                .permitAll();
+                .antMatchers("/admin/**").hasRole("ADMIN");
     }
 
     @Override

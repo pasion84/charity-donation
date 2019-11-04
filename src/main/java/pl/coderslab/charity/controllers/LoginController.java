@@ -15,5 +15,4 @@ public class LoginController {
         model.addAttribute("data", new LoginFormDTO());
         return "login";
     }
-
 }

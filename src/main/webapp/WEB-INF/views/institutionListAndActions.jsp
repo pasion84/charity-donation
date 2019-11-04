@@ -34,22 +34,22 @@
         </form:form>
     </table>
 
-    <div class="help--slides active" data-id="1">
-        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
-            Możesz sprawdzić czym się zajmują.</p>
+<%--    <div class="help--slides active" data-id="1">--%>
+<%--        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.--%>
+<%--            Możesz sprawdzić czym się zajmują.</p>--%>
 
-        <ul class="help--slides-items">
-            <c:forEach items="${institutions}" var="institution" varStatus="i">
-            <c:if test="${(i.index+1)%2>0}">
-            <li></c:if>
-                <div class="col">
-                    <div class="title">${institution.name}</div>
-                    <div class="title">${institution.description}</div>
-                </div>
-                </c:forEach>
+<%--        <ul class="help--slides-items">--%>
+<%--            <c:forEach items="${institutions}" var="institution" varStatus="i">--%>
+<%--            <c:if test="${(i.index+1)%2>0}">--%>
+<%--            <li></c:if>--%>
+<%--                <div class="col">--%>
+<%--                    <div class="title">${institution.name}</div>--%>
+<%--                    <div class="title">${institution.description}</div>--%>
+<%--                </div>--%>
+<%--                </c:forEach>--%>
 
-        </ul>
-    </div>
+<%--        </ul>--%>
+<%--    </div>--%>
 
 
 </section>
