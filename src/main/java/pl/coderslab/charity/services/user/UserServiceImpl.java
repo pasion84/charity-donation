@@ -65,17 +65,6 @@ public class UserServiceImpl implements UserService{
         user.setPhone(data.getPhone());
         userRepository.save(user);
     }
-
-//    private void saveUser(RegistrationFormDTO data, User user) {
-//        String encodedPassword = passwordEncoder.encode(data.getPassword());
-//        String encodedRePassword = passwordEncoder.encode(data.getRePassword());
-//        user.setFirstName(data.getFirstName());
-//        user.setLastName(data.getLastName());
-//        user.setEmail(data.getEmail());
-//        user.setPassword(encodedPassword);
-//        user.setRePassword(encodedRePassword);
-//        user.setPhone(data.getPhone());
-//    }
     @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);

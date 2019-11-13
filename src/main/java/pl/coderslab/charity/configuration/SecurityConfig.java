@@ -63,7 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/user/register").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN");
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated();
     }
 
     @Override
@@ -72,8 +73,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/resources/**");
     }
+
     @Bean
-    public SpringDataUserDetailsService customUserDetailsService(){
-      return new SpringDataUserDetailsService();
+    public SpringDataUserDetailsService customUserDetailsService() {
+        return new SpringDataUserDetailsService();
     }
 }

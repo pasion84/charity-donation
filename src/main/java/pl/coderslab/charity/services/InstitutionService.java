@@ -27,4 +27,17 @@ public class InstitutionService {
         institution.setDescription(data.getDescription());
         institutionRepository.save(institution);
     }
+    public void deleteInstitution(Long id){
+        Institution institution = institutionRepository.getOne(id);
+        institutionRepository.delete(institution);
+    }
+    public Institution getInstitutionById(Long id){
+        return institutionRepository.getOne(id);
+    }
+    public void editInstitution(InstitutionFormDTO data, Long id){
+        Institution institution = getInstitutionById(id);
+        institution.setName(data.getName());
+        institution.setDescription(data.getDescription());
+        institutionRepository.save(institution);
+    }
 }
