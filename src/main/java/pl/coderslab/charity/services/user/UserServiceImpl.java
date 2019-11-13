@@ -3,6 +3,7 @@ package pl.coderslab.charity.services.user;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.coderslab.charity.dto.EditUserFormDTO;
 import pl.coderslab.charity.dto.RegistrationFormDTO;
 import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.User;
@@ -33,11 +34,6 @@ public class UserServiceImpl implements UserService{
         return count <= 0;
     }
 
-
-//    public User findAdmin(String email){
-//        return userRepository.findAdmin(email);
-//    }
-
     public List<Role>findAllRoles(){
         return roleRepository.findAll();
     }
@@ -45,38 +41,44 @@ public class UserServiceImpl implements UserService{
     public void registerUser(RegistrationFormDTO data) {
         User user = new User();
         Role userRole = roleRepository.findByName("ROLE_USER");
-        saveUser(data, user);
-        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
-        userRepository.save(user);
-    }
-
-    public void editUser(RegistrationFormDTO data){
-        User user = userRepository.findByEmail(data.getEmail());
-        saveUser(data, user);
-        userRepository.save(user);
-
-    }
-
-    private void saveUser(RegistrationFormDTO data, User user) {
         String encodedPassword = passwordEncoder.encode(data.getPassword());
         String encodedRePassword = passwordEncoder.encode(data.getRePassword());
         user.setFirstName(data.getFirstName());
         user.setLastName(data.getLastName());
         user.setEmail(data.getEmail());
         user.setPassword(encodedPassword);
-        user.setPassword(encodedRePassword);
+        user.setRePassword(encodedRePassword);
         user.setPhone(data.getPhone());
+        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        userRepository.save(user);
     }
+
+    public void editUser(EditUserFormDTO data){
+        User user = userRepository.findByEmail(data.getEmail());
+        String encodedPassword = passwordEncoder.encode(data.getPassword());
+        String encodedRePassword = passwordEncoder.encode(data.getRePassword());
+        user.setFirstName(data.getFirstName());
+        user.setLastName(data.getLastName());
+        user.setEmail(data.getEmail());
+        user.setPassword(encodedPassword);
+        user.setRePassword(encodedRePassword);
+        user.setPhone(data.getPhone());
+        userRepository.save(user);
+    }
+
+//    private void saveUser(RegistrationFormDTO data, User user) {
+//        String encodedPassword = passwordEncoder.encode(data.getPassword());
+//        String encodedRePassword = passwordEncoder.encode(data.getRePassword());
+//        user.setFirstName(data.getFirstName());
+//        user.setLastName(data.getLastName());
+//        user.setEmail(data.getEmail());
+//        user.setPassword(encodedPassword);
+//        user.setRePassword(encodedRePassword);
+//        user.setPhone(data.getPhone());
+//    }
     @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-//    @Override
-//    public void saveUser(User user) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        Role userRole = roleRepository.findByName("ROLE_USER");
-//        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
-//        userRepository.save(user);
-//    }
 }

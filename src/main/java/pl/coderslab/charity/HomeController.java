@@ -41,12 +41,6 @@ public class HomeController {
         return userService.findByEmail(principal.getName());
     }
 
-//    @ModelAttribute("principalIsAdmin")
-//    public User principalToAdmin() {
-//        Principal principal = SecurityContextHolder.getContext().getAuthentication();
-//        return userService.findAdmin(principal.getName());
-//    }
-
 
     @ModelAttribute("institutions")
     public List<Institution> sumOfAllInstitutions(){
@@ -66,8 +60,6 @@ public class HomeController {
     public String home(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         if (principalToUser() != null){
             model.addAttribute("loggedUser", new LoggedUserDTO(principalToUser().getFirstName()));
-//        }else if (principalToAdmin() != null){
-//            model.addAttribute("loggedAdmin", new LoggedUserDTO(principalToAdmin().getFirstName()));
         }
         return "index";
     }
