@@ -4,7 +4,7 @@
 <div class="slogan container container--90">
     <div class="slogan--item">
         <h1>
-            dodaj instytucję/zaktualizuj dane instytucji
+            dodaj instytucję
         </h1>
 
     </div>
@@ -14,8 +14,6 @@
 <section class="nav--actions" style="font-size: large">
     <div class="description">
         <form:form method="post" modelAttribute="institutionFormDTO">
-            <form:hidden path="id" value="${institutionFormDTO.id}"/>
-            <h2>${institutionFormDTO.id}</h2>
             <div class="title">
                 <p class="description">
                     Name: <form:input path="name"/>
@@ -31,7 +29,7 @@
             </div>
             <div class="title">
                 <p>
-                    <input type="submit" value="Dodaj/Zaktualizuj">
+                    <input type="submit" value="Dodaj">
                     <input type="reset" value="Wyczysc">
                 </p>
             </div>

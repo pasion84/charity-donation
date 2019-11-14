@@ -17,6 +17,7 @@
     <table style="font-size: large">
         <thead>
         <tr>
+            <th>id instytucji</th>
             <th>nazwa instytucji</th>
             <th>opis instytucji</th>
             <th>akcje</th>
@@ -25,17 +26,20 @@
         <tbody>
         <c:forEach items="${institutionList}" var="institution">
             <tr>
+                <td>${institution.id}</td>
                 <td>${institution.name}</td>
                 <td>${institution.description}</td>
                 <td>
                     <button class="btn btn--small">
-                        <a href="${mainURL}admin/organizations/addOrEdit" data-id="${institution.id}">Edytuj</a>
+                        <a href="${mainURL}admin/organizations/edit">Edytuj</a>
                     </button>
                 </td>
 
                 <td>
                     <button class="btn btn--small">
-                    <a href="${mainURL}admin/organizations" data-id="${institution.id}">Usun</a>
+                        <a href="<c:url value="organizations/delete"><c:param name="id" value="${institution.id}"/></c:url> ">
+                            Usun
+                        </a>
                     </button>
                 </td>
             </tr>
@@ -43,7 +47,7 @@
         </tbody>
     </table>
         <button class="btn btn--small">
-            <a href="${mainURL}admin/organizations/addOrEdit">Dodaj</a>
+            <a href="${mainURL}admin/organizations/add">Dodaj</a>
         </button>
     </div>
 </section>

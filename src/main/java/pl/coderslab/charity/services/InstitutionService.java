@@ -40,4 +40,7 @@ public class InstitutionService {
         institution.setDescription(data.getDescription());
         institutionRepository.save(institution);
     }
+    public void deleteInstitutionById(Long id){
+        institutionRepository.deleteInstitutionById(id);
+    }
 }

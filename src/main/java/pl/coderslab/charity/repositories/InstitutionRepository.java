@@ -8,4 +8,5 @@ import java.util.List;
 public interface InstitutionRepository extends JpaRepository<Institution, Long> {
 
     List<Institution> findAll();
+    void deleteInstitutionById(Long id);
 }

@@ -34,28 +34,36 @@ public class InstitutionController {
         return "institutionListAndActions";
     }
 
-    @PostMapping
-    public String processDeleteInstitution(@RequestParam Long id) {
+    @GetMapping("add")
+    public String prepareAddInstitution(Model model){
+            model.addAttribute("institutionFormDTO", new InstitutionFormDTO());
+        return "createInstitution";
+    }
+    @PostMapping("add")
+    public String processAddInstitution(@ModelAttribute("institutionFormDTO") @Valid InstitutionFormDTO institutionFormDTO, BindingResult result){
+            institutionService.addNewInstitution(institutionFormDTO);
+        return "redirect:/admin/organizations";
+    }
+    @GetMapping("edit")
+    public String prepareEditInstitution(Long id, Model model){
+        model.addAttribute("editInstitutionFormDTO", institutionService.getInstitutionById(id));
+        return "editInstitution";
+    }
+    @PostMapping("edit")
+    public String processEditInstitution(@ModelAttribute("editInstitutionFormDTO") @Valid InstitutionFormDTO data, BindingResult bindingResult,
+                                         Long id){
+        institutionService.editInstitution(data, id);
+        return "redirect:/admin/organizations";
+    }
+    @GetMapping("delete")
+    public String prepareDeleteInstitution(Long id, Model model){
+        model.addAttribute("deleteInstitutionFormDTO", institutionService.getInstitutionById(id));
+        return "deleteInstitution";
+    }
+    @GetMapping("deleteInstitution")
+    public String processDeleteInstitution(Long id){
         institutionService.deleteInstitution(id);
         return "redirect:/admin/organizations";
     }
 
-    @GetMapping("/addOrEdit")
-    public String prepareAddInstitution(Model model, Long id){
-        if (id == null){
-            model.addAttribute("institutionFormDTO", new InstitutionFormDTO());
-        }else {
-            model.addAttribute("institutionFormDTO", institutionService.getInstitutionById(id));
-        }
-        return "createEditInstitution";
-    }
-    @PostMapping("/addOrEdit")
-    public String processAddInstitution(@ModelAttribute("institutionFormDTO") @Valid InstitutionFormDTO institutionFormDTO, BindingResult result, Model model, Long id){
-        if (id == null){
-            institutionService.addNewInstitution(institutionFormDTO);
-        }else{
-            institutionService.editInstitution(institutionFormDTO, id);
-        }
-        return "redirect:/admin/organizations";
-    }
 }
