@@ -31,7 +31,9 @@
                 <td>${institution.description}</td>
                 <td>
                     <button class="btn btn--small">
-                        <a href="${mainURL}admin/organizations/edit">Edytuj</a>
+                        <a href="<c:url value="organizations/edit"><c:param name="id" value="${institution.id}"/></c:url> ">
+                            Edytuj
+                        </a>
                     </button>
                 </td>
 
